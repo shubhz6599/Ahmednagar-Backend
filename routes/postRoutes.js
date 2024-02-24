@@ -34,7 +34,7 @@ router.get('/:postId', async (req, res) => {
         if (!post || !post.photo) {
             return res.status(404).json({ message: 'Post or photo not found',statusMsg: 'Failure' });
         }
-         res.status(200).sendFile(path.join(__dirname, '/public/images/uploa', post.photo));
+         res.status(200).sendFile(path.join(__dirname, '../public/images/uploads', post.photo));
         
     } catch (error) {
         console.error(error);
