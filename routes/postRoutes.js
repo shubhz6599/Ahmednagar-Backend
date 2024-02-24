@@ -27,18 +27,14 @@ router.post("/upload",upload.single('photo'), async function (req, res) {
     res.status(201).json({message:'Image saved successfully', statusMsg: 'Success'});
 })
 
-
 router.get('/:postId', async (req, res) => {
-    
     try {
         const postId = req.params.postId;
         const post = await Post.findById(postId);
         if (!post || !post.photo) {
             return res.status(404).json({ message: 'Post or photo not found',statusMsg: 'Failure' });
         }
-        console.log( path.join(__dirname, 'public'))
-        console.log( path.join(__dirname, '../public/images/uploads'))
-        res.status(200).sendFile(path.join(__dirname, '../public/images/uploads', post.photo));
+         res.status(200).sendFile(path.join(__dirname, '/public/images/uploa', post.photo));
         
     } catch (error) {
         console.error(error);

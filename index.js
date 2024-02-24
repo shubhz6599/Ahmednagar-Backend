@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;;
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use('../public/images/uploads', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use('/post', postRoutes);
 app.use('/user', userRoutes);
