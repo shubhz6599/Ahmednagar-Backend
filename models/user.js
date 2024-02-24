@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
-// const { MONGODB_URI } = require('../config/env');
-require('dotenv').config()
+const { MONGODB_URI } = require('../config/env');
 
 
-// mongoose.connect(MONGODB_URI);
-// .env
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(MONGODB_URI);
 const db = mongoose.connection;
 console.log("ss",process.env.MONGODB_URI);
 

@@ -2,8 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-// const { JWT_SECRET } = require('../config/env');
-require('dotenv').config()
+const { JWT_SECRET } = require('../config/env');
 
 const nodemailer = require('nodemailer');
 
@@ -13,7 +12,10 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
     const { Username, Email, Password } = req.body;
     try {
+        console.log("existingUser1");
         const existingUser = await User.findOne({ Username: Username });
+        console.log("existingUser");
+
         const existingUserWithEmail = await User.findOne({ Email: Email });
         if (existingUser || existingUserWithEmail) {
             return res.status(400).json({ message: 'Username or Email already exists', statusMsg: 'Failure' });
