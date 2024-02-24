@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     const { Username, Password } = req.body;
 
-console.log(req.body);
+    console.log(req.body);
     try {
         const user = await User.findOne({ Username: Username });
         if (!user) {
@@ -62,10 +62,10 @@ router.get('/:userId', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found', statusMsg: 'Failure' });
         }
-        return res.json({user: user,  message: 'User data fetched!', statusMsg: 'Success' });
+        return res.json({ user: user, message: 'User data fetched!', statusMsg: 'Success' });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: 'Internal server error', statusMsg: 'Failure'});
+        return res.status(500).json({ message: 'Internal server error', statusMsg: 'Failure' });
     }
 });
 
